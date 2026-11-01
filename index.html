@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Code Quest is a gamified beginner coding-learning website. Choose a quest, answer questions and earn XP.">
+  <title>Code Quest | Learn • Code • Conquer</title>
+
+  <!-- External files -->
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ==================== 1. NAVBAR ==================== -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home" class="logo">&lt;CodeQuest/&gt;</a>
+      <ul class="nav-links">
+        <li><a href="#quests">Quests</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==================== 2. HERO ==================== -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Code Quest</h1>
+        <p class="hero-tagline">Learn • Code • Conquer</p>
+        <p class="hero-text">
+          Pick a quest, answer coding questions, earn XP and level up your
+          HTML, CSS and JavaScript skills.
+        </p>
+        <a href="#quests" id="start-quest-btn" class="btn btn-primary">Start Quest</a>
+      </div>
+    </section>
+
+    <!-- ==================== 3. QUEST ZONE ==================== -->
+    <!-- Only one panel inside this section is visible at a time:
+         quest selection, quiz area, or result screen. -->
+    <section id="quests" class="quest-zone">
+      <div class="container">
+
+        <!-- ---------- 4. QUEST SELECTION (cards) ---------- -->
+        <div id="quest-selection" class="quest-selection">
+          <h2 class="section-title">Choose Your Quest</h2>
+          <p class="section-subtitle">Select a path and test what you know.</p>
+
+          <div class="quest-cards">
+
+            <article class="quest-card" id="card-html">
+              <div class="quest-icon" aria-hidden="true">&lt;/&gt;</div>
+              <h3 class="quest-title">HTML Quest</h3>
+              <p class="quest-desc">Tags, structure and the building blocks of every web page.</p>
+              <p class="quest-meta">5 Questions • 50 XP</p>
+              <button type="button" class="btn btn-primary quest-btn" data-quest="html">Begin</button>
+            </article>
+
+            <article class="quest-card" id="card-css">
+              <div class="quest-icon" aria-hidden="true">{ }</div>
+              <h3 class="quest-title">CSS Quest</h3>
+              <p class="quest-desc">Colors, layouts and styling that make websites look great.</p>
+              <p class="quest-meta">5 Questions • 50 XP</p>
+              <button type="button" class="btn btn-primary quest-btn" data-quest="css">Begin</button>
+            </article>
+
+            <article class="quest-card" id="card-js">
+              <div class="quest-icon" aria-hidden="true">JS</div>
+              <h3 class="quest-title">JavaScript Quest</h3>
+              <p class="quest-desc">Variables, functions and logic that bring pages to life.</p>
+              <p class="quest-meta">5 Questions • 50 XP</p>
+              <button type="button" class="btn btn-primary quest-btn" data-quest="js">Begin</button>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ---------- 5. QUIZ AREA (hidden at start) ---------- -->
+        <div id="quiz-area" class="quiz-area hidden">
+          <div class="quiz-header">
+            <h2 id="quiz-quest-name" class="quiz-quest-name">Quest Name</h2>
+            <p class="quiz-xp">XP: <span id="xp-display">0</span></p>
+          </div>
+
+          <div class="quiz-progress">
+            <p id="question-counter" class="question-counter">Question 1 of 5</p>
+            <div class="progress-track" role="progressbar" aria-label="Quest progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h3 id="question-text" class="question-text">Question text appears here.</h3>
+
+            <div id="options-container" class="options-container">
+              <button type="button" class="option-btn" data-index="0">Option A</button>
+              <button type="button" class="option-btn" data-index="1">Option B</button>
+              <button type="button" class="option-btn" data-index="2">Option C</button>
+              <button type="button" class="option-btn" data-index="3">Option D</button>
+            </div>
+
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+
+            <button type="button" id="next-btn" class="btn btn-primary hidden">Next</button>
+          </div>
+        </div>
+
+        <!-- ---------- 6. RESULT SCREEN (hidden at start) ---------- -->
+        <div id="result-screen" class="result-screen hidden">
+          <h2 class="section-title">Quest Complete!</h2>
+          <p id="result-rank" class="result-rank">Code Warrior</p>
+
+          <div class="result-stats">
+            <div class="result-stat">
+              <span class="stat-label">Total XP</span>
+              <span id="result-xp" class="stat-value">0</span>
+            </div>
+            <div class="result-stat">
+              <span class="stat-label">Score</span>
+              <span id="result-score" class="stat-value">0/5</span>
+            </div>
+          </div>
+
+          <p id="result-message" class="result-message">Well played, adventurer!</p>
+
+          <div class="result-actions">
+            <button type="button" id="restart-btn" class="btn btn-primary">Restart Quest</button>
+            <button type="button" id="choose-another-btn" class="btn btn-secondary">Choose Another Quest</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. HOW IT WORKS ==================== -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Four simple steps from beginner to conqueror.</p>
+
+        <div class="steps">
+          <article class="step-card">
+            <span class="step-number">1</span>
+            <h3>Choose a Quest</h3>
+            <p>Pick HTML, CSS or JavaScript.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">2</span>
+            <h3>Answer Questions</h3>
+            <p>Select the correct option for each question.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">3</span>
+            <h3>Earn XP</h3>
+            <p>Get +10 XP for every correct answer.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">4</span>
+            <h3>See Your Result</h3>
+            <p>Check your score and rank, then try again.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. ABOUT ==================== -->
+    <section id="about" class="about">
+      <div class="container about-content">
+        <h2 class="section-title">About Code Quest</h2>
+        <p>
+          Code Quest is a beginner-friendly learning game that turns web
+          development basics into small quests. It was created as a
+          first-year student project to practice front-end development.
+        </p>
+        <ul class="tech-list" aria-label="Technologies used">
+          <li class="tech-badge">HTML5</li>
+          <li class="tech-badge">CSS3</li>
+          <li class="tech-badge">Vanilla JavaScript</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 9. FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p class="footer-brand">&lt;CodeQuest/&gt;</p>
+      <p class="footer-credit">Built by [Your Name] • [Your College], 1st Year</p>
+      <p class="footer-copy">&copy; 2026 Code Quest. All rights reserved.</p>
+      <a href="#home" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
